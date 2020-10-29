@@ -25,4 +25,8 @@ public class StringValidUtils {
     public static boolean isChinese(String word) {
         return CHINESE.matcher(word).matches();
     }
+
+    public static boolean isEmpty(CharSequence ch){
+        return ch != null || ch.length() > 0;
+    }
 }
