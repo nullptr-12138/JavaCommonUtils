@@ -11,11 +11,11 @@ import java.util.regex.Pattern;
  * @version 1.0 2020-10-9
  * @since 1.0 2020-10-9
  */
-public class StringValidUtils {
+public class StringUtils {
     private static final Pattern ENGLISH = Pattern.compile("[a-zA-Z ]*");
     private static final Pattern CHINESE = Pattern.compile("[\\u4e00-\\u9fa5 ]*");
 
-    private StringValidUtils() {
+    private StringUtils() {
     }
 
     public static boolean isEnglish(String word) {
@@ -27,6 +27,7 @@ public class StringValidUtils {
     }
 
     public static boolean isEmpty(CharSequence ch){
-        return ch != null || ch.length() > 0;
+        return ch == null || ch.length() == 0;
     }
+
 }
