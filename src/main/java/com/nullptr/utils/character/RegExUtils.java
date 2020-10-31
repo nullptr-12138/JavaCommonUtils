@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * @version 1.0 2020-10-30
  * @since 1.1
  */
-public class RegExUtils extends org.apache.commons.lang3.RegExUtils {
+public class RegExUtils {
     /** 大写字母 */
     public static final Pattern UPPERCASE = Pattern.compile("^[A-Z\\s]+$");
     /** 小写字母 */
@@ -42,6 +42,15 @@ public class RegExUtils extends org.apache.commons.lang3.RegExUtils {
     public static final Pattern POSITIVE_NUMBER = Pattern.compile("^\\d*\\.?\\d+$");
     /** 负数，不匹配空白 */
     public static final Pattern NEGATIVE_NUMBER = Pattern.compile("^-\\d*\\.?\\d+$");
+
+    /** 数字，不匹配空白 */
+    public static final Pattern DECIMAL = Pattern.compile("^\\d+$");
+    /** 正数，不匹配空白 */
+    public static final Pattern HEXADECIMAL = Pattern.compile("^(0(x|X))?[a-fA-F0-9]+$");
+    /** 负数，不匹配空白 */
+    public static final Pattern OCTAL = Pattern.compile("^(o|O)[0-7]+$");
+    /** 负数，不匹配空白 */
+    public static final Pattern BINARY = Pattern.compile("^(0|1)+$");
 
     /** 整数，不匹配空白 */
     public static final Pattern INTEGER = Pattern.compile("^-?\\d+$");
