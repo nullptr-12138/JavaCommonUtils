@@ -6,7 +6,7 @@ import java.util.UUID;
 /**
  * 随机数工具类
  *
- * @author 胖橘
+ * @author nullptr
  * @version 1.0 2020-3-31
  * @version 1.1 继承org.apache.commons.lang3.RandomUtils，增加获取随机中文和UUID
  * @since 1.0

@@ -21,6 +21,8 @@ public final class VerificationCodeUtils {
         MIX
     }
 
+    private VerificationCodeUtils() {}
+
     /**
      * 获取验证码
      *

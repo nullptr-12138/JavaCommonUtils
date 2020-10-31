@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 /**
  * 正则工具类，主要用于验证字符串所属语言, 只用于Unicode编码, 默认匹配空白字符
  *
- * @author 胖橘
+ * @author nullptr
  * @version 1.0 2020-10-30
  * @since 1.1
  */

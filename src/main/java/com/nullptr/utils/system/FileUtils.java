@@ -15,7 +15,7 @@ import java.util.regex.Matcher;
 /**
  * 文件处理工具，主要包含写入和读取文件数据
  *
- * @author majl
+ * @author nullptr
  * @version 1.0 2020-8-12
  * @version 1.1 2020-8-17 修改底层使用javax.xml.ws方式进行请求
  * @version 1.2 2020-8-20 接口更名为WsdlServiceFileUtils，与请求发送和密级信息生成模块相互独立

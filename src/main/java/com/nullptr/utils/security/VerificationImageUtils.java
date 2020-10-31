@@ -10,32 +10,41 @@ import java.awt.image.BufferedImage;
  *
  * @author nullptr
  * @version 1.0 2020-3-18
- * @since 1.0 2020-3-18
+ * @version 1.1 2020-3-31 增加验证图像尺寸参数选择
+ * @since 1.0
  */
 public final class VerificationImageUtils {
-    /** 图片宽 */
-    private static final int WIDTH = 95;
-    /** 图片高 */
-    private static final int HEIGHT = 25;
+    private VerificationImageUtils() {}
 
     /**
      * 生成验证码图像
      *
-     * @param text 验证码文本
+     * @param code 验证码
      *
      * @since 1.0
      */
-    public BufferedImage generate(String text) {
+    public BufferedImage generate(String code) {
+        return generate(code, 92, 25);
+    }
+
+    /**
+     * 生成验证码图像
+     *
+     * @param code 验证码
+     *
+     * @since 1.0
+     */
+    public BufferedImage generate(String code, int width, int height) {
         // 初始化缓存区图像为8位图像
-        BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_BGR);
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
         // 获取图形上下文
         Graphics graphics = image.getGraphics();
         // 填充画布
-        graphics.fillRect(0, 0, WIDTH, HEIGHT);
+        graphics.fillRect(0, 0, width, height);
         // 绘制干扰线
-        drawLine(graphics);
+        drawLine(graphics, width, height);
         // 绘制文字
-        drawText(text, graphics);
+        drawText(code, graphics);
         // 关闭画布
         graphics.dispose();
         return image;
@@ -94,15 +103,15 @@ public final class VerificationImageUtils {
      *
      * @since 1.0
      */
-    private void drawLine(Graphics graphics) {
+    private void drawLine(Graphics graphics, int width, int height) {
         // 随机获取干扰线数量，取值范围为20-40
          int lineSize = RandomUtils.nextInt(20, 40);
          // 绘制干扰线
          for (int i = 0; i <= lineSize; i++) {
              // 计算起始x轴坐标
-             int x1 = RandomUtils.nextInt(WIDTH);
+             int x1 = RandomUtils.nextInt(width);
              // 计算起始y轴坐标
-             int y1 = RandomUtils.nextInt(HEIGHT);
+             int y1 = RandomUtils.nextInt(height);
              // 计算终止x轴坐标
              int x2 = x1 + RandomUtils.nextInt(13);
              // 计算终止y轴坐标

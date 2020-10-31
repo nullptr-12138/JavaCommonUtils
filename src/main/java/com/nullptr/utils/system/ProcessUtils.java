@@ -15,7 +15,7 @@ import java.util.concurrent.Future;
 /**
  * 系统进程工具
  *
- * @author majl
+ * @author nullptr
  * @version 1.0 2020-9-24
  * @since 1.0 2020-9-24
  */

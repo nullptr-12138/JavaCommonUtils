@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * XML文档工具类, 包含了对xml文档的一系列操作方法
  *
- * @author majl
+ * @author nullptr
  * @version 1.0 2020-9-2
  * @version 1.1 2020-9-10
  * @since 1.0 2020-9-2
