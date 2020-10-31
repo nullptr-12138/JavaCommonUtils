@@ -1,8 +1,10 @@
 package com.nullptr.utils.time;
 
+
 import java.text.FieldPosition;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -82,4 +84,57 @@ public class TimeUtils {
         }
         return null;
     }
+
+    /**
+     * 根据Date时间获取本年已过天数
+     *
+     * @return 返回本年已过天数
+     * @since 1.1
+     * @see
+     */
+    public static int getDaysPassedThisYear(Date date){
+        return getCalendarBydate(date).get(Calendar.DAY_OF_YEAR);
+    }
+
+    /**
+     * 根据Date时间获取本月已过天数
+     *
+     * @return 返回本月已过天数
+     * @since 1.1
+     * @see
+     */
+    public static int getDaysPassedThisMonth(Date date){
+        return getCalendarBydate(date).get(Calendar.DAY_OF_MONTH);
+    }
+
+    /**
+     * 根据Date时间获取本周已过天数
+     *
+     * @return 返回本周已过天数
+     * @since 1.1
+     * @see
+     */
+    public static int getDaysPassedThisWeek(Date date){
+        int i = getCalendarBydate(date).get(Calendar.DAY_OF_WEEK);
+        if (i == 1){
+            i = 7;
+            return i;
+        }else {
+            return --i;
+        }
+    }
+
+    /**
+     * 根据Date时间获取日期类
+     *
+     * @return 返回日期类
+     * @since 1.1
+     * @see
+     */
+    private static Calendar getCalendarBydate(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar;
+    }
+
 }
