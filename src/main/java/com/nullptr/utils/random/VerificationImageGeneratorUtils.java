@@ -56,9 +56,9 @@ public final class VerificationImageGeneratorUtils {
      */
     private Color getColor() {
         // 随机生成RGB三色通道值
-        int rColor = RandomGeneratorUtils.randomInt(0, 255);
-        int gColor = RandomGeneratorUtils.randomInt(0, 255);
-        int bColor = RandomGeneratorUtils.randomInt(0, 255);
+        int rColor = RandomUtils.nextInt(0, 255);
+        int gColor = RandomUtils.nextInt(0, 255);
+        int bColor = RandomUtils.nextInt(0, 255);
         return new Color(rColor, gColor, bColor);
     }
 
@@ -77,9 +77,9 @@ public final class VerificationImageGeneratorUtils {
             // 随机获取文字颜色
             graphics.setColor(getColor());
             // 随机生成X轴偏移量，取值范围0-9
-            int translateX = RandomGeneratorUtils.randomInt(10);
+            int translateX = RandomUtils.nextInt(10);
             // 随机生成Y轴偏移量，取值范围0-3
-            int translateY = RandomGeneratorUtils.randomInt(3);
+            int translateY = RandomUtils.nextInt(3);
             // 执行偏移操作
             graphics.translate(translateX, translateY);
             // 绘制文字，文字间距离相差15
@@ -94,17 +94,17 @@ public final class VerificationImageGeneratorUtils {
      */
     private void drawLine(Graphics graphics) {
         // 随机获取干扰线数量，取值范围为20-40
-         int lineSize = RandomGeneratorUtils.randomInt(20, 40);
+         int lineSize = RandomUtils.nextInt(20, 40);
          // 绘制干扰线
          for (int i = 0; i <= lineSize; i++) {
              // 计算起始x轴坐标
-             int x1 = RandomGeneratorUtils.randomInt(WIDTH);
+             int x1 = RandomUtils.nextInt(WIDTH);
              // 计算起始y轴坐标
-             int y1 = RandomGeneratorUtils.randomInt(HEIGHT);
+             int y1 = RandomUtils.nextInt(HEIGHT);
              // 计算终止x轴坐标
-             int x2 = x1 + RandomGeneratorUtils.randomInt(13);
+             int x2 = x1 + RandomUtils.nextInt(13);
              // 计算终止y轴坐标
-             int y2 = y1 + RandomGeneratorUtils.randomInt(15);
+             int y2 = y1 + RandomUtils.nextInt(15);
              // 设置干扰线颜色
              graphics.setColor(getColor());
              // 绘制干扰线

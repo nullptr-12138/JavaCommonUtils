@@ -36,7 +36,7 @@ public final class VerificationCodeGeneratorUtils {
      * @since 1.0
      */
     private boolean nextIsLetter() {
-        return RandomGeneratorUtils.randomBoolean();
+        return RandomUtils.nextBoolean();
     }
 
     /**
@@ -47,7 +47,7 @@ public final class VerificationCodeGeneratorUtils {
      * @since 1.0
      */
     private boolean nextIsUppercase() {
-        return RandomGeneratorUtils.randomBoolean();
+        return RandomUtils.nextBoolean();
     }
 
     /**
@@ -57,7 +57,7 @@ public final class VerificationCodeGeneratorUtils {
      */
     private int generateNumber() {
         // 生成0-9内的随机数
-        return RandomGeneratorUtils.randomInt(0, 9);
+        return RandomUtils.nextInt(0, 9);
     }
 
     /**
@@ -69,10 +69,10 @@ public final class VerificationCodeGeneratorUtils {
         // 判断是否大写字母
         if (nextIsUppercase()) {
             // 生成大写字母ascii码范围内的随机数
-            return RandomGeneratorUtils.randomChar('A', 'Z');
+            return RandomUtils.randomChar('A', 'Z');
         } else {
             // 生成小写字母ascii码范围内的随机数
-            return RandomGeneratorUtils.randomChar('a', 'z');
+            return RandomUtils.randomChar('a', 'z');
         }
     }
 }

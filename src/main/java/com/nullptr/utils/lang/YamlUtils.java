@@ -13,8 +13,7 @@ import java.util.Map;
  * @since 1.1
  */
 public class YamlUtils {
-	private YamlUtils() {
-	}
+	private YamlUtils() { }
 
 	/**
 	 * 获取yaml映射
@@ -23,7 +22,7 @@ public class YamlUtils {
 	 * @return 键值
 	 * @since 1.0
 	 */
-	private static Map<String, Object> getMap(String yamlStr) {
+	private static Map<String, Object> parseYaml(String yamlStr) {
 		Yaml yaml = new Yaml();
 		return yaml.load(yamlStr);
 	}
@@ -35,7 +34,7 @@ public class YamlUtils {
 	 * @return 键值
 	 * @since 1.0
 	 */
-	private static Map<String, Object> getMap(File yamlFile) throws FileNotFoundException {
+	private static Map<String, Object> parseYaml(File yamlFile) throws FileNotFoundException {
 		Yaml yaml = new Yaml();
 		return yaml.load(new FileInputStream(yamlFile));
 	}
@@ -47,7 +46,7 @@ public class YamlUtils {
 	 * @return 键值
 	 * @since 1.0
 	 */
-	private static Map<String, Object> getMap(InputStream stream) {
+	private static Map<String, Object> parseYaml(InputStream stream) {
 		Yaml yaml = new Yaml();
 		return yaml.load(stream);
 	}
@@ -88,7 +87,7 @@ public class YamlUtils {
 	 * @since 1.0
 	 */
 	public static <T> T getValue(String key, String yamlStr) {
-		return getValue(key, getMap(yamlStr));
+		return getValue(key, parseYaml(yamlStr));
 	}
 
 	/**
@@ -100,7 +99,7 @@ public class YamlUtils {
 	 * @since 1.0
 	 */
 	public static <T> T getValue(String key, File yamlFile) throws FileNotFoundException {
-		return getValue(key, getMap(yamlFile));
+		return getValue(key, parseYaml(yamlFile));
 	}
 
 	/**
@@ -112,7 +111,7 @@ public class YamlUtils {
 	 * @since 1.0
 	 */
 	public static <T> T getValue(String key, InputStream stream) {
-		return getValue(key, getMap(stream));
+		return getValue(key, parseYaml(stream));
 	}
 
 	/**
