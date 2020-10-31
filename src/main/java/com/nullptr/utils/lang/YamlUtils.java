@@ -22,7 +22,7 @@ public class YamlUtils {
 	 * @return 键值
 	 * @since 1.0
 	 */
-	private static Map<String, Object> parseYaml(String yamlStr) {
+	private static Map<String, Object> parseYaml(final String yamlStr) {
 		Yaml yaml = new Yaml();
 		return yaml.load(yamlStr);
 	}
@@ -34,7 +34,7 @@ public class YamlUtils {
 	 * @return 键值
 	 * @since 1.0
 	 */
-	private static Map<String, Object> parseYaml(File yamlFile) throws FileNotFoundException {
+	private static Map<String, Object> parseYaml(final File yamlFile) throws FileNotFoundException {
 		Yaml yaml = new Yaml();
 		return yaml.load(new FileInputStream(yamlFile));
 	}
@@ -46,7 +46,7 @@ public class YamlUtils {
 	 * @return 键值
 	 * @since 1.0
 	 */
-	private static Map<String, Object> parseYaml(InputStream stream) {
+	private static Map<String, Object> parseYaml(final InputStream stream) {
 		Yaml yaml = new Yaml();
 		return yaml.load(stream);
 	}
@@ -59,7 +59,7 @@ public class YamlUtils {
 	 * @return 键值
 	 * @since 1.0
 	 */
-	public static <T> T getValue(String key, Map<String, Object> yamlMap) {
+	public static <T> T getValue(final String key, final Map<String, Object> yamlMap) {
 		String[] keys = key.split("\\.");
 		// 初始化配置映射对象
 		Object value = yamlMap;
@@ -86,7 +86,7 @@ public class YamlUtils {
 	 * @return 键值
 	 * @since 1.0
 	 */
-	public static <T> T getValue(String key, String yamlStr) {
+	public static <T> T getValue(final String key, final String yamlStr) {
 		return getValue(key, parseYaml(yamlStr));
 	}
 
@@ -98,7 +98,7 @@ public class YamlUtils {
 	 * @return 键值
 	 * @since 1.0
 	 */
-	public static <T> T getValue(String key, File yamlFile) throws FileNotFoundException {
+	public static <T> T getValue(final String key, final File yamlFile) throws FileNotFoundException {
 		return getValue(key, parseYaml(yamlFile));
 	}
 
@@ -110,7 +110,7 @@ public class YamlUtils {
 	 * @return 键值
 	 * @since 1.0
 	 */
-	public static <T> T getValue(String key, InputStream stream) {
+	public static <T> T getValue(final String key, final  InputStream stream) {
 		return getValue(key, parseYaml(stream));
 	}
 
@@ -121,7 +121,7 @@ public class YamlUtils {
 	 * @return 键值是否为空
 	 * @since 1.0
 	 */
-	public static boolean existKey(String key, Map<String, Object> configMap) {
+	public static boolean existKey(final String key, final Map<String, Object> configMap) {
 		return getValue(key, configMap) != null;
 	}
 
@@ -132,7 +132,7 @@ public class YamlUtils {
 	 * @return 键值是否为空
 	 * @since 1.0
 	 */
-	public static boolean existKey(String key, String yamlStr) {
+	public static boolean existKey(final String key, final String yamlStr) {
 		return getValue(key, yamlStr) != null;
 	}
 
@@ -143,7 +143,7 @@ public class YamlUtils {
 	 * @return 键值是否为空
 	 * @since 1.0
 	 */
-	public static boolean existKey(String key, File yamlFile) throws FileNotFoundException {
+	public static boolean existKey(final String key, final File yamlFile) throws FileNotFoundException {
 		return getValue(key, yamlFile) != null;
 	}
 
@@ -154,7 +154,7 @@ public class YamlUtils {
 	 * @return 键值是否为空
 	 * @since 1.0
 	 */
-	public static boolean existKey(String key, InputStream stream) {
+	public static boolean existKey(final String key, final InputStream stream) {
 		return getValue(key, stream) != null;
 	}
 
@@ -165,7 +165,7 @@ public class YamlUtils {
 	 * @return yaml字符串
 	 * @since 1.0
 	 */
-	public static String toString(Map<String, Object> yamlMap) {
+	public static String toString(final Map<String, Object> yamlMap) {
 		Yaml yaml = new Yaml();
 		return yaml.dump(yamlMap);
 	}
@@ -177,7 +177,7 @@ public class YamlUtils {
 	 * @param writer 流写入器
 	 * @since 1.0
 	 */
-	public static void write(Map<String, Object> yamlMap, Writer writer) {
+	public static void write(final Map<String, Object> yamlMap, final Writer writer) {
 		Yaml yaml = new Yaml();
 		yaml.dump(yamlMap, writer);
 	}

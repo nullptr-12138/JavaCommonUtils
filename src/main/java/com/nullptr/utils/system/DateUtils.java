@@ -70,7 +70,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return 格式化后的时间字符串
      * @since 1.0
      */
-    public static String formatDate(Date date, String pattern) {
+    public static String formatDate(Date date, final String pattern) {
         date = ObjectUtils.defaultIfNull(date, new Date());
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
         return dateFormat.format(date);
@@ -83,7 +83,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return 当前日期总毫秒数
      * @since 1.3
      */
-    public static long toMilliseconds(Date date) {
+    public static long toMilliseconds(final Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         return calendar.getTimeInMillis();
@@ -103,29 +103,6 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     }
 
     /**
-     * 计算与当前时间差值
-     *
-     * @param startDate 日期
-     * @return 相差结果，取毫秒
-     * @since 1.3
-     */
-    public static long subTime(Date startDate) {
-        return subTime(startDate, new Date(), Base.MILLISECOND);
-    }
-
-    /**
-     * 计算与当前时间差值
-     *
-     * @param startDate 日期
-     * @param base 结果类型，如天，小时，分钟等
-     * @return 相差结果
-     * @since 1.3
-     */
-    public static long subTime(Date startDate, Base base) {
-        return subTime(startDate, new Date(), base);
-    }
-
-    /**
      * 计算两个日期之间的差值
      *
      * @param startDate 日期
@@ -133,7 +110,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return 相差结果，取毫秒
      * @since 1.3
      */
-    public static long subTime(Date startDate, Date endDate) {
+    public static long subTime(final Date startDate, final Date endDate) {
         return subTime(startDate, endDate, Base.MILLISECOND);
     }
 
@@ -146,7 +123,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return 相差结果
      * @since 1.3
      */
-    public static long subTime(Date startDate, Date endDate, Base base) {
+    public static long subTime(Date startDate, Date endDate, final Base base) {
         startDate = ObjectUtils.defaultIfNull(startDate, new Date());
         endDate = ObjectUtils.defaultIfNull(endDate, new Date());
         long time = startDate.getTime();
@@ -161,7 +138,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return 布尔值
      * @since 1.3
      */
-    public static boolean isLeapYear(Date date) {
+    public static boolean isLeapYear(final Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         int year = calendar.get(Calendar.YEAR);
@@ -175,7 +152,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return 布尔值
      * @since 1.3
      */
-    public static boolean isLeapYear(String str) throws ParseException {
+    public static boolean isLeapYear(final String str) throws ParseException {
         Date date = parseDate(str, DATE_FORMAT);
         return isLeapYear(date);
     }
@@ -188,7 +165,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return 布尔值
      * @since 1.3
      */
-    public static boolean isLeapYear(String str, String pattern) throws ParseException {
+    public static boolean isLeapYear(final String str, final String pattern) throws ParseException {
         Date date = parseDate(str, pattern);
         return isLeapYear(date);
     }

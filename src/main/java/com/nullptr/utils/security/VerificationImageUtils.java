@@ -23,7 +23,7 @@ public final class VerificationImageUtils {
      *
      * @since 1.0
      */
-    public BufferedImage generate(String code) {
+    public BufferedImage generate(final  String code) {
         return generate(code, 92, 25);
     }
 
@@ -34,7 +34,7 @@ public final class VerificationImageUtils {
      *
      * @since 1.0
      */
-    public BufferedImage generate(String code, int width, int height) {
+    public BufferedImage generate(final String code, final int width, final int height) {
         // 初始化缓存区图像为8位图像
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
         // 获取图形上下文
@@ -80,7 +80,7 @@ public final class VerificationImageUtils {
      *
      * @since 1.0
      */
-    private void drawText(String text, Graphics graphics) {
+    private void drawText(final String text, final Graphics graphics) {
         // 获取字体
         graphics.setFont(getFont());
         // 逐个绘制文字
@@ -103,7 +103,7 @@ public final class VerificationImageUtils {
      *
      * @since 1.0
      */
-    private void drawLine(Graphics graphics, int width, int height) {
+    private void drawLine(final Graphics graphics, final int width, final int height) {
         // 随机获取干扰线数量，取值范围为20-40
          int lineSize = RandomUtils.nextInt(20, 40);
          // 绘制干扰线

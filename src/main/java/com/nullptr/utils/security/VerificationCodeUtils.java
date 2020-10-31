@@ -29,7 +29,7 @@ public final class VerificationCodeUtils {
      * @param size 验证码位数
      * @since 1.1
      */
-    public String generate(int size) {
+    public String generate(final int size) {
         return generate(size, Mode.MIX);
     }
 
@@ -41,7 +41,7 @@ public final class VerificationCodeUtils {
      * @return 验证码字符串
      * @since 1.1
      */
-    public static String generate(int size, Mode mode) {
+    public static String generate(final int size, final Mode mode) {
         StringBuilder builder = new StringBuilder();
         Generator generator = getGenerator(mode);
         for (int index = 0; index < size; index++) {
@@ -56,7 +56,7 @@ public final class VerificationCodeUtils {
      * @param mode 验证码模式
      * @since 1.1
      */
-    static Generator getGenerator(Mode mode) {
+    static Generator getGenerator(final Mode mode) {
         switch(mode) {
             case NUMBER: return RandomUtils::nextNumber;
             case MIX: return RandomUtils::nextLetter;

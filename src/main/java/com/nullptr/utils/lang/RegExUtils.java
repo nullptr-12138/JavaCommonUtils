@@ -4,13 +4,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 正则工具类，主要用于验证字符串所属语言, 只用于Unicode编码, 默认匹配空白字符
+ * 正则工具类, 只用于Unicode编码, 默认匹配空白字符
  *
  * @author nullptr
  * @version 1.0 2020-10-30
  * @since 1.1
  */
-public class RegExUtils {
+public class RegExUtils extends org.apache.commons.lang3.RegExUtils {
     /** 大写字母 */
     public static final Pattern UPPERCASE = Pattern.compile("^[A-Z\\s]+$");
     /** 小写字母 */
@@ -119,7 +119,7 @@ public class RegExUtils {
      * @return 是否匹配
      * @since 1.0
      */
-    public static boolean isMatch(Pattern pattern, String input) {
+    public static boolean isMatch(final Pattern pattern, final CharSequence input) {
         return pattern.matcher(input).matches();
     }
 
@@ -131,7 +131,7 @@ public class RegExUtils {
      * @return 匹配的字符串数组
      * @since 1.0
      */
-    public static String[] match(Pattern pattern, String input) {
+    public static String[] match(final Pattern pattern, final CharSequence input) {
         return pattern.split(input);
     }
 
@@ -144,7 +144,7 @@ public class RegExUtils {
      * @return 匹配的字符串数组
      * @since 1.0
      */
-    public static String[] match(Pattern pattern, String input, int limit) {
+    public static String[] match(final Pattern pattern, final CharSequence input, final int limit) {
         return pattern.split(input, limit);
     }
 
@@ -156,7 +156,7 @@ public class RegExUtils {
      * @return 匹配的次数
      * @since 1.0
      */
-    public static int count(Pattern pattern, String input) {
+    public static int count(final Pattern pattern, final CharSequence input) {
         Matcher matcher = pattern.matcher(input);
         int count = 0;
         while (matcher.find()) {
@@ -172,7 +172,7 @@ public class RegExUtils {
      * @return 正则表达式字符串
      * @since 1.0
      */
-    public static String getRegex(Pattern pattern) {
+    public static String getRegex(final Pattern pattern) {
         return pattern.toString();
     }
 }
