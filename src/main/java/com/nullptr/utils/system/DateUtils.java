@@ -120,12 +120,19 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @param startDate 日期
      * @param endDate 另一日期
      * @param base 结果类型，如天，小时，分钟等
-     * @return 相差结果
+     * @return 相差结果, 如果相等或起始日期大于结束日期则返回0
      * @since 1.3
      */
     public static long subTime(Date startDate, Date endDate, final Base base) {
         startDate = ObjectUtils.defaultIfNull(startDate, new Date());
         endDate = ObjectUtils.defaultIfNull(endDate, new Date());
+
+        Calendar startCal = toCalendar(startDate);
+        Calendar endCal = toCalendar(endDate);
+        if (startCal.compareTo(endCal) >= 0) {
+            return 0L;
+        }
+
         long time = startDate.getTime();
         long anotherTime = endDate.getTime();
         return (time - anotherTime) / base.base;
