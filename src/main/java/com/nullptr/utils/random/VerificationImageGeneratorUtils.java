@@ -1,9 +1,7 @@
-package com.nullptr.utils.verification;
+package com.nullptr.utils.random;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
-import com.nullptr.utils.random.RandomGeneratorUtils;
 
 /**
  * 验证码图像生成器

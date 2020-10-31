@@ -1,6 +1,4 @@
-package com.nullptr.utils.verification;
-
-import com.nullptr.utils.random.RandomGeneratorUtils;
+package com.nullptr.utils.random;
 
 /**
  * 验证码生成器

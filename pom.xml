@@ -19,6 +19,7 @@
         <httpcomponents.version>4.5.2</httpcomponents.version>
         <dom4j.version>2.1.1</dom4j.version>
         <net.sf.json.version>2.4</net.sf.json.version>
+        <snakeyaml.version>1.26</snakeyaml.version>
     </properties>
 
     <dependencies>
@@ -56,12 +57,17 @@
             <version>${dom4j.version}</version>
         </dependency>
 
-        <!-- net.sf json解析器 -->
         <dependency>
             <groupId>net.sf.json-lib</groupId>
             <artifactId>json-lib</artifactId>
             <version>${net.sf.json.version}</version>
             <classifier>jdk15</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>
         </dependency>
     </dependencies>
 

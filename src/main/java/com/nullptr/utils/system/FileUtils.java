@@ -1,4 +1,4 @@
-package com.nullptr.utils.file;
+package com.nullptr.utils.system;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.Md5Crypt;

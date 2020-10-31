@@ -1,4 +1,4 @@
-package com.nullptr.utils.character;
+package com.nullptr.utils.lang;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

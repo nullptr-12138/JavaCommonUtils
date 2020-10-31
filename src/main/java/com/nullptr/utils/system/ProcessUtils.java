@@ -1,4 +1,4 @@
-package com.nullptr.utils.process;
+package com.nullptr.utils.system;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;

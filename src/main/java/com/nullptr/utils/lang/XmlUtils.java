@@ -1,4 +1,4 @@
-package com.nullptr.utils.xml;
+package com.nullptr.utils.lang;
 
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;

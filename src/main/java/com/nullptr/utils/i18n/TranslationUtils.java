@@ -1,4 +1,4 @@
-package com.nullptr.utils.character;
+package com.nullptr.utils.i18n;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

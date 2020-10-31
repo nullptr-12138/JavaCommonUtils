@@ -1,4 +1,4 @@
-package com.nullptr.utils.json;
+package com.nullptr.utils.lang;
 
 import net.sf.json.JSONObject;
 
@@ -9,7 +9,7 @@ import net.sf.json.JSONObject;
  * @version 1.0 2019-12-27
  * @since 1.0 2019-12-27
  */
-public interface JSONConvert <T> {
+public class JsonUtils<T> {
     /**
      * 将实体类转换为json字段
      *
@@ -17,5 +17,5 @@ public interface JSONConvert <T> {
      * @return json字段
      * @since 1.0
      */
-    JSONObject toJson(T t);
+    //JSONObject toJson(T t);
 }
