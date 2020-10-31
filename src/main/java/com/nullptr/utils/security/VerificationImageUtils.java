@@ -1,4 +1,6 @@
-package com.nullptr.utils.random;
+package com.nullptr.utils.security;
+
+import com.nullptr.utils.system.RandomUtils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -10,7 +12,7 @@ import java.awt.image.BufferedImage;
  * @version 1.0 2020-3-18
  * @since 1.0 2020-3-18
  */
-public final class VerificationImageGeneratorUtils {
+public final class VerificationImageUtils {
     /** 图片宽 */
     private static final int WIDTH = 95;
     /** 图片高 */
