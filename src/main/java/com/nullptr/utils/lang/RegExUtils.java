@@ -43,13 +43,13 @@ public class RegExUtils {
     /** 负数，不匹配空白 */
     public static final Pattern NEGATIVE_NUMBER = Pattern.compile("^-\\d*\\.?\\d+$");
 
-    /** 数字，不匹配空白 */
+    /** 十进制，不匹配空白 */
     public static final Pattern DECIMAL = Pattern.compile("^\\d+$");
-    /** 正数，不匹配空白 */
+    /** 十六进制，不匹配空白 */
     public static final Pattern HEXADECIMAL = Pattern.compile("^(0(x|X))?[a-fA-F0-9]+$");
-    /** 负数，不匹配空白 */
+    /** 八进制，不匹配空白 */
     public static final Pattern OCTAL = Pattern.compile("^(o|O)[0-7]+$");
-    /** 负数，不匹配空白 */
+    /** 二进制，不匹配空白 */
     public static final Pattern BINARY = Pattern.compile("^(0|1)+$");
 
     /** 整数，不匹配空白 */
