@@ -5,7 +5,6 @@ import org.apache.commons.lang3.ObjectUtils;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
 
 /**
  * 日期工具类
@@ -20,6 +19,25 @@ import java.util.Objects;
 public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     public static final String DATE_FORMAT = "yyyy-MM-dd";
     public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+    public enum Base {
+        /** 日 */
+        DAY(1000 * 60 * 60 * 24),
+        /** 小时 */
+        HOUR(1000 * 60 * 60),
+        /** 分钟 */
+        MINUTE(1000 * 60),
+        /** 秒 */
+        SECOND(1000),
+        /** 毫秒 */
+        MILLISECOND(1);
+
+        Base(int base) {
+            this.base = base;
+        }
+
+        public final int base;
+    }
 
     /** 构造方法私有化，防止生成实例 */
     private DateUtils() {}
@@ -81,5 +99,57 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(milliseconds);
         return calendar.getTime();
+    }
+
+    /**
+     * 计算与当前时间差值
+     *
+     * @param date 日期
+     * @return 相差结果
+     * @since 1.0
+     */
+    public static long subTime(Date date) {
+        return subTime(date, new Date(), Base.MILLISECOND);
+    }
+
+    /**
+     * 计算与当前时间差值
+     *
+     * @param date 日期
+     * @param base 结果类型，如天，小时，分钟等
+     * @return 相差结果
+     * @since 1.0
+     */
+    public static long subTime(Date date, Base base) {
+        return subTime(date, new Date(), base);
+    }
+
+    /**
+     * 计算两个日期之间的差值
+     *
+     * @param date 日期
+     * @param anotherDate 另一日期
+     * @return 相差结果
+     * @since 1.0
+     */
+    public static long subTime(Date date, Date anotherDate) {
+        return subTime(date, anotherDate, Base.MILLISECOND);
+    }
+
+    /**
+     * 计算两个日期之间的差值
+     *
+     * @param date 日期
+     * @param anotherDate 另一日期
+     * @param base 结果类型，如天，小时，分钟等
+     * @return 相差结果
+     * @since 1.0
+     */
+    public static long subTime(Date date, Date anotherDate, Base base) {
+        date = ObjectUtils.defaultIfNull(date, new Date());
+        anotherDate = ObjectUtils.defaultIfNull(anotherDate, new Date());
+        long time = date.getTime();
+        long anotherTime = anotherDate.getTime();
+        return (time - anotherTime) / base.base;
     }
 }
