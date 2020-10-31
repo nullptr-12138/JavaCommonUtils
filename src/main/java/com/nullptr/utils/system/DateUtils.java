@@ -162,15 +162,11 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @return 布尔值
      * @since 1.0
      */
-    public static boolean isLeapYear(Date date){
-        int year = date.getYear();
-        if (year%10 == 0 && year%100 != 0){
-            return true;
-        }
-        if(year%400 ==0){
-            return true;
-        }
-            return false;
+    public static boolean isLeapYear(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int year = calendar.get(Calendar.YEAR);
+        return (year % 10 == 0 && year % 100 != 0) || year % 400 == 0;
     }
 
     /**
@@ -181,7 +177,20 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * @since 1.0
      */
     public static boolean isLeapYear(String str) throws ParseException {
-        Date date = parseDate(str,DATE_FORMAT);
+        Date date = parseDate(str, DATE_FORMAT);
+        return isLeapYear(date);
+    }
+
+    /**
+     * 判断是否是闰年
+     *
+     * @param str 字符串日期
+     * @param pattern 时间序列化格式字符串
+     * @return 布尔值
+     * @since 1.0
+     */
+    public static boolean isLeapYear(String str, String pattern) throws ParseException {
+        Date date = parseDate(str, pattern);
         return isLeapYear(date);
     }
 }
