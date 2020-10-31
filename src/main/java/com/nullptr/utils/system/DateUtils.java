@@ -169,4 +169,36 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         Date date = parseDate(str, pattern);
         return isLeapYear(date);
     }
+
+    /**
+     * 时间从0时0分0秒开始
+     *
+     * @param date 日期
+     * @return 返回一天的开始时间
+     * @since 1.3
+     */
+    public static Date getInitialDateTheDay(final Date date){
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(date);
+        instance.set(Calendar.HOUR_OF_DAY, 0);
+        instance.set(Calendar.MINUTE, 0);
+        instance.set(Calendar.SECOND, 0);
+        return instance.getTime();
+    }
+
+    /**
+     * 时间从23时59分59秒开始
+     *
+     * @param date 日期
+     * @return 返回一天的结束时间
+     * @since 1.3
+     */
+    public static Date getEndDateTheDay(final Date date){
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(date);
+        instance.set(Calendar.HOUR_OF_DAY, 23);
+        instance.set(Calendar.MINUTE, 59);
+        instance.set(Calendar.SECOND, 59);
+        return instance.getTime();
+    }
 }
