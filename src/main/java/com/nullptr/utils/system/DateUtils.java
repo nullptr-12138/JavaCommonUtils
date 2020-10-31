@@ -2,7 +2,9 @@ package com.nullptr.utils.system;
 
 import org.apache.commons.lang3.ObjectUtils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -104,52 +106,82 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     /**
      * 计算与当前时间差值
      *
-     * @param date 日期
+     * @param startDate 日期
      * @return 相差结果
      * @since 1.0
      */
-    public static long subTime(Date date) {
-        return subTime(date, new Date(), Base.MILLISECOND);
+    public static long subTime(Date startDate) {
+        return subTime(startDate, new Date(), Base.MILLISECOND);
     }
 
     /**
      * 计算与当前时间差值
      *
-     * @param date 日期
+     * @param startDate 日期
      * @param base 结果类型，如天，小时，分钟等
      * @return 相差结果
      * @since 1.0
      */
-    public static long subTime(Date date, Base base) {
-        return subTime(date, new Date(), base);
+    public static long subTime(Date startDate, Base base) {
+        return subTime(startDate, new Date(), base);
     }
 
     /**
      * 计算两个日期之间的差值
      *
-     * @param date 日期
-     * @param anotherDate 另一日期
+     * @param startDate 日期
+     * @param endDate 另一日期
      * @return 相差结果
      * @since 1.0
      */
-    public static long subTime(Date date, Date anotherDate) {
-        return subTime(date, anotherDate, Base.MILLISECOND);
+    public static long subTime(Date startDate, Date endDate) {
+        return subTime(startDate, endDate, Base.MILLISECOND);
     }
 
     /**
      * 计算两个日期之间的差值
      *
-     * @param date 日期
-     * @param anotherDate 另一日期
+     * @param startDate 日期
+     * @param endDate 另一日期
      * @param base 结果类型，如天，小时，分钟等
      * @return 相差结果
      * @since 1.0
      */
-    public static long subTime(Date date, Date anotherDate, Base base) {
-        date = ObjectUtils.defaultIfNull(date, new Date());
-        anotherDate = ObjectUtils.defaultIfNull(anotherDate, new Date());
-        long time = date.getTime();
-        long anotherTime = anotherDate.getTime();
+    public static long subTime(Date startDate, Date endDate, Base base) {
+        startDate = ObjectUtils.defaultIfNull(startDate, new Date());
+        endDate = ObjectUtils.defaultIfNull(endDate, new Date());
+        long time = startDate.getTime();
+        long anotherTime = endDate.getTime();
         return (time - anotherTime) / base.base;
+    }
+
+    /**
+     * 判断是否是闰年
+     *
+     * @param date 日期
+     * @return 布尔值
+     * @since 1.0
+     */
+    public static boolean isLeapYear(Date date){
+        int year = date.getYear();
+        if (year%10 == 0 && year%100 != 0){
+            return true;
+        }
+        if(year%400 ==0){
+            return true;
+        }
+            return false;
+    }
+
+    /**
+     * 判断是否是闰年
+     *
+     * @param str 字符串日期
+     * @return 布尔值
+     * @since 1.0
+     */
+    public static boolean isLeapYear(String str) throws ParseException {
+        Date date = parseDate(str,DATE_FORMAT);
+        return isLeapYear(date);
     }
 }
