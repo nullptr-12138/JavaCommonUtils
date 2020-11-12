@@ -9,6 +9,7 @@ import org.apache.commons.logging.LogFactory;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
 
@@ -27,6 +28,7 @@ import java.util.regex.Matcher;
  * @version 1.8 2020-9-9 修改获取UUID文件名方法，内部增加将传入的文件路径转换为文件名操作
  * @version 1.9 2020-9-10 增加获取文件类型，获取文件名称（不包含类型名称），修改文件名称（不修改类型），修改文件类型等方法
  * @version 1.10 2020-9-24 新增从输入流写入至文件方法, 根据字符编码获取文件数据方法，修复路径分隔符转换失败bug
+ * @version 1.11 2020-11-12 新增根据文件名称读取文件行内容
  * @since 1.0 2020-8-12
  */
 public class FileUtils extends org.apache.commons.io.FileUtils {
@@ -231,6 +233,34 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
             IOUtils.copy(input, fos);
         } catch (IOException e) {
             logger.error("写入文件" + file.getName() + "时发生错误", e);
+        }
+    }
+
+    /**
+     * 根据虚拟机默认编码获取文件各行内容
+     *
+     * @param fileName 待读取的文件名
+     * @return 文件各行内容
+     * @since 1.11
+     */
+    public static List<String> readLines(String fileName) throws IOException {
+        return readLines(fileName, Charset.defaultCharset());
+    }
+
+    /**
+     * 根据给定编码获取文件各行内容
+     *
+     * @param fileName 待读取的文件名
+     * @param charset 文件编码
+     * @return 文件各行内容
+     * @since 1.11
+     */
+    public static List<String> readLines(String fileName, Charset charset) throws IOException {
+        File file = new File(fileName);
+        if (file.exists()) {
+            return readLines(file, charset);
+        } else {
+            throw new IOException("文件不存在");
         }
     }
 
