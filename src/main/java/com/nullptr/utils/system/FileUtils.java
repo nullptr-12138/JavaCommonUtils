@@ -88,11 +88,6 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
      */
     public static boolean writeFileData(String filePath, byte[] fileData) {
         filePath = FileUtils.replaceSplit(filePath);
-        // 删除原始文件
-        if (!FileUtils.deleteQuietly(new File(filePath))) {
-            // 失败则抛出异常
-            return false;
-        }
         // 获取文件实例
         File file = new File(filePath);
         // 向文件中写入加密数据
