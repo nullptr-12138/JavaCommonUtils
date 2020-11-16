@@ -1,8 +1,6 @@
 package com.nullptr.utils.system;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.Md5Crypt;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -23,6 +21,10 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
     public static final String TYPE_SPLIT = ".";
     /** 默认字符集 */
     public static final Charset DEFAULT_CHARSET = Charset.defaultCharset();
+    /** 当前用户目录 */
+    public static final String USER_HOME = System.getProperty("user.home");
+    /** 系统临时目录 */
+    public static final String TMP_HOME = System.getProperty("java.io.tmpdir");
 
     /** 构造方法私有化，防止生成实例 */
     protected FileUtils() {}
