@@ -37,7 +37,11 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
             this.base = base;
         }
 
-        public final int base;
+        public int getBase() {
+            return base;
+        }
+
+        private final int base;
     }
 
     /** 构造方法私有化，防止生成实例 */
